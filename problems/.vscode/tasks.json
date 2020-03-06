@@ -1,0 +1,80 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "DefaultBuildTask",
+            "type": "shell",
+            "command": "g++ -g ${file} -o ${fileDirname}/${fileBasenameNoExtension} && cd ${fileDirname} && ./${fileBasenameNoExtension}  ",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "clear": true
+            }
+        },
+        {
+            "label": "makeBuildTask",
+            "type": "shell",
+            "command": "cd ${workspaceFolder}/${relativeFileDirname} && make  && ./main ",
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "clear": true
+            }
+        },
+        {
+            "label": "testTask",
+            "type": "shell",
+            "command": "cd ${workspaceFolder}/${relativeFileDirname} && ./main ",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "clear": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "buildTask",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "/usr/bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "clear": true
+            }
+        }
+    ]
+}
+
+
